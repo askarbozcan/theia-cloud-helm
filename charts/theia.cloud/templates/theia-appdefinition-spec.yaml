@@ -1,4 +1,4 @@
-apiVersion: theia.cloud/v4beta
+apiVersion: theia.cloud/v5beta
 kind: AppDefinition
 metadata:
   name: theia-cloud-demo
@@ -28,6 +28,6 @@ spec:
   uplinkLimit: 30000
   mountPath: "/home/project/persisted"
   monitor:
-    timeoutAfter: 30
-    notifyAfter: 25
-    port: 8081
+    timeoutAfter: {{ tpl (.Values.image.monitor.timeoutAfter | toString) . }}
+    notifyAfter: {{ tpl (.Values.image.monitor.notifyAfter | toString) . }}
+    port: {{ tpl (.Values.image.monitor.port | toString) . }}
